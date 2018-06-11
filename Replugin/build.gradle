@@ -1,0 +1,46 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    
+    repositories {
+        google()
+        jcenter()
+
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.3'
+        classpath 'com.qihoo360.replugin:replugin-host-gradle:2.2.4'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url "http://10.136.192.250:8083/repository/maven-releases/" }
+
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+    minSdkVersion = 17
+    targetSdkVersion = 27
+    compileSdkVersion = 27
+    buildToolsVersion = "27.0.1"
+    supportLibrary = "27.0.1"
+    androidSupportSdkVersion= "27.0.1"
+
+    gsonVersion="2.8.0"
+    retrofit2Version      = "2.2.0"
+    rxjava2Version        = "2.0.1"
+    okhttp3Version        = "3.4.1"
+
+
+}

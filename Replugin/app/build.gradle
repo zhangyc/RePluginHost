@@ -1,0 +1,67 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "zyc.com.replugin"
+        minSdkVersion 17
+        targetSdkVersion 26
+        buildToolsVersion "26.0.2"
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled false
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+//    compileOptions {
+//        targetCompatibility 1.8
+//        sourceCompatibility 1.8
+//    }
+}
+apply plugin: 'replugin-host-gradle'
+repluginHostConfig {
+    /**
+     * 是否使用 AppCompat 库
+     * 不需要个性化配置时，无需添加
+     */
+    useAppCompat = true
+//    /**
+//     * 背景不透明的坑的数量
+//     * 不需要个性化配置时，无需添加
+//     */
+//    countNotTranslucentStandard = 6
+//    countNotTranslucentSingleTop = 2
+//    countNotTranslucentSingleTask = 3
+//    countNotTranslucentSingleInstance = 2
+}
+dependencies {
+    compile 'com.qihoo360.replugin:replugin-host-lib:2.2.4'
+
+    compile 'com.alibaba:fastjson:1.1.68.android'
+    compile 'com.lzy.net:okgo:3.0.4'
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    compile 'io.reactivex.rxjava2:rxjava:2.0.5'
+    compile 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar'
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:26.1.0'
+    compile 'com.android.support.constraint:constraint-layout:1.1.0'
+    testCompile 'junit:junit:4.12'
+    compile "com.google.code.gson:gson:${rootProject.ext.gsonVersion}"
+    //rertofit2 gson  adapter
+    compile "com.squareup.retrofit2:retrofit:${rootProject.ext.rxjava2Version}"
+    compile "com.squareup.retrofit2:converter-gson:${rootProject.ext.rxjava2Version}"
+    compile 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
+    compile "com.squareup.okhttp3:logging-interceptor:${rootProject.ext.okhttp3Version}"
+
+    //rxjava2  rxandroid
+    compile "io.reactivex.rxjava2:rxjava:${rootProject.ext.rxjava2Version}"
+    compile "io.reactivex.rxjava2:rxandroid:${rootProject.ext.rxjava2Version}"
+//    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+//    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}
